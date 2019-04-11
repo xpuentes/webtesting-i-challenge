@@ -22,6 +22,9 @@ function fail(item) {
 
   if(enhancement < 15){
     durability -= 5;
+    if(durability < 0){
+      return { message: 'The item has been destroyed'}
+    }
     return { ...item, durability };
   } else if (enhancement >= 15){
     if(enhancement > 16){
@@ -29,6 +32,9 @@ function fail(item) {
     }
 
     durability -= 10;
+    if(durability < 0){
+      return { message: 'The item has been destroyed'}
+    }
     return { ...item, durability, enhancement };
   }
 
