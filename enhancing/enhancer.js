@@ -38,6 +38,14 @@ function fail(item) {
 function repair(item) {
   let { durability } = item;
 
+  durability = durability || -1;
+
+  if(durability < 0){
+    return {message: 'This item is beyond repair'};
+  } else if (durability > 100){
+    return {message: 'This item should not exist'};
+  }
+
   durability = 100;
 
   return { ...item, durability };

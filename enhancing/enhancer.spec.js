@@ -8,6 +8,18 @@ describe('The enhancer module', () => {
       expect(repair({name: 'Needle', durability: 1, enhancement: 0}))
            .toEqual({name: 'Needle', durability: 100, enhancement: 0});
     });
+    it('Should return message, This item is beyond repair', () => {
+      expect(repair({name: 'Needle', durability: -1, enhancement: 0}))
+           .toEqual({message: 'This item is beyond repair'});
+    });
+    it('Should return message, This item is beyond repair', () => {
+      expect(repair({name: 'Needle', durability: null, enhancement: 0}))
+           .toEqual({message: 'This item is beyond repair'});
+    });
+    it('Should return message, This item should not exist', () => {
+      expect(repair({name: 'Needle', durability: 101, enhancement: 0}))
+           .toEqual({message: 'This item should not exist'});
+    });
   });
 
   describe('The success function', () => {
