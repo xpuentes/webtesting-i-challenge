@@ -18,6 +18,20 @@ function succeed(item) {
 }
 
 function fail(item) {
+  let { enhancement, durability } = item;
+
+  if(enhancement < 15){
+    durability -= 5;
+    return { ...item, durability };
+  } else if (enhancement >= 15){
+    if(enhancement > 16){
+      enhancement -= 1;
+    }
+
+    durability -= 10;
+    return { ...item, durability, enhancement };
+  }
+
   return { ...item };
 }
 
